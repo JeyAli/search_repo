@@ -7,11 +7,16 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.github.R
 import com.example.github.model.RepositoryModel
 import com.example.github.viewmodel.RepositoriesViewModel
+import com.example.github.views.RepositorySearchFragmentDirections
+import java.util.logging.Logger
 
 class RepositoryRecyclerAdapter: RecyclerView.Adapter<RepositoryRecyclerAdapter.RepositoriesViewHolder>() {
     private var repositories = ArrayList<RepositoryModel>()
@@ -52,6 +57,17 @@ class RepositoryRecyclerAdapter: RecyclerView.Adapter<RepositoryRecyclerAdapter.
         Glide.with(holder.itemView)
             .load(repositories[position].owner?.imageUrl)
             .into(holder.thumbnailAvatar)
+
+        holder.itemView.setOnClickListener {
+            val action =
+                RepositorySearchFragmentDirections.actionRepoSearchFragmentToRepoReadMeFragment(
+                    repositories[position].owner?.login!!,
+                    repositories[position].name!!,
+                    repositories[position].issues!!,
+                    repositories[position].language!!
+                )
+            it.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {

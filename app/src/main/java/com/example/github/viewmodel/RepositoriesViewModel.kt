@@ -9,7 +9,7 @@ import com.example.github.repository.SortingType
 import kotlinx.coroutines.launch
 
 class RepositoriesViewModel(application: Application) : AndroidViewModel(application) {
-    val searchRepository = SearchRepository()
+    private val searchRepository = SearchRepository()
     var repositories = searchRepository.getRepositories()
 
 

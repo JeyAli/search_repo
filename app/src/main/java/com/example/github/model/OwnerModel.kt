@@ -7,5 +7,8 @@ data class OwnerModel(
     val nodeId: String?,
 
     @SerializedName("avatar_url")
-    val imageUrl: String?
+    val imageUrl: String?,
+
+    @SerializedName("login")
+    val login: String?
 )

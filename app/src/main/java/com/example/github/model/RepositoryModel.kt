@@ -9,6 +9,9 @@ data class RepositoryModel (
     @SerializedName("stargazers_count")
     var star: Int?,
 
+    @SerializedName("language")
+    var language: String?,
+
     @SerializedName("full_name")
     var title: String?,
 
@@ -16,5 +19,8 @@ data class RepositoryModel (
     var issues: Int?,
 
     @SerializedName("owner")
-    var owner: OwnerModel?
+    var owner: OwnerModel?,
+
+    @SerializedName("name")
+    var name: String?
 )

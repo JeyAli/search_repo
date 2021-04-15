@@ -22,9 +22,10 @@ interface GitHubApiService {
     ): SearchResponseModel
 
     @Headers("Accept: application/vnd.github.v3+json")
-    @GET("repos/{full_name}/readme")
+    @GET("repos/{login}/{name}/readme")
     suspend fun getReadMe(
-        @Path("full_name") repo: String
+        @Path("login") login: String,
+        @Path("name") name: String
     ): RepositoryReadMeModel
 }
 
