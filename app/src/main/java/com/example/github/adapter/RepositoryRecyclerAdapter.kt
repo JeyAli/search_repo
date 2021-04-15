@@ -59,14 +59,17 @@ class RepositoryRecyclerAdapter: RecyclerView.Adapter<RepositoryRecyclerAdapter.
             .into(holder.thumbnailAvatar)
 
         holder.itemView.setOnClickListener {
-            val action =
-                RepositorySearchFragmentDirections.actionRepoSearchFragmentToRepoReadMeFragment(
-                    repositories[position].owner?.login!!,
-                    repositories[position].name!!,
-                    repositories[position].issues!!,
-                    repositories[position].language!!
-                )
-            it.findNavController().navigate(action)
+            if(!repositories[position].owner?.login.isNullOrEmpty() &&
+                !repositories[position].name.isNullOrEmpty()) {
+                val action =
+                    RepositorySearchFragmentDirections.actionRepoSearchFragmentToRepoReadMeFragment(
+                        repositories[position].owner?.login!!,
+                        repositories[position].name!!,
+                        repositories[position].issues?:0,
+                        repositories[position].language?:""
+                    )
+                it.findNavController().navigate(action)
+            }
         }
     }
 

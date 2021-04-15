@@ -3,8 +3,8 @@ package com.example.github.model
 import com.google.gson.annotations.SerializedName
 
 data class RepositoryReadMeModel (
-        @SerializedName("content")
-        var content: String?,
+        @SerializedName("html_url")
+        var readMeURL: String?,
 
         @SerializedName("encoding")
         var encoding: String?,

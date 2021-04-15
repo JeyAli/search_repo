@@ -18,7 +18,7 @@ class ReadMeRepository {
     }
 
     suspend fun fetchReadMe(login: String, name: String) {
-        readMeModel.postValue(
-            gitHubApiService.getReadMe(login, name))
+        val m = gitHubApiService.getReadMe(login, name)
+        readMeModel.postValue(m)
     }
 }
