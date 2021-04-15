@@ -5,3 +5,4 @@ enum class SortingType {
     Forks,
     BestMatch
 }
+

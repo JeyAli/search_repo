@@ -12,7 +12,6 @@ class RepositoriesViewModel(application: Application) : AndroidViewModel(applica
     private val searchRepository = SearchRepository()
     var repositories = searchRepository.getRepositories()
 
-
     fun search(name: String,
                sort: SortingType = SortingType.Stars,
                order: OrderByType = OrderByType.DESC) {
@@ -21,3 +20,4 @@ class RepositoriesViewModel(application: Application) : AndroidViewModel(applica
         }
     }
 }
+

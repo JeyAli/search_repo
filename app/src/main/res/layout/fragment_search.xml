@@ -6,16 +6,17 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/gitHub_image"
+        android:layout_height="@dimen/gitHub_image"
         android:src="@drawable/giticon"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"/>
+        android:layout_marginTop="@dimen/gitHub_image_marginTop"
+        android:layout_gravity="center"
+        android:contentDescription="@string/content_description_git_icon" />
 
     <TextView
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:text="Search Repository in GitHub"
+        android:text="@string/search_text"
         android:textAlignment="center"/>
 
     <LinearLayout
@@ -23,26 +24,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
     <EditText
         android:id="@+id/txtSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@android:color/transparent"
-        android:hint="Add your keyword for search..." />
+        android:hint="@string/search_hint"
+        android:autofillHints="Repository name"
+        android:inputType="text" />
 
         <ImageButton
             android:id="@+id/btnSearch"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="@dimen/search_image"
+            android:layout_height="@dimen/search_image"
             android:scaleType="fitCenter"
-            android:layout_marginStart="60dp"
-            android:background="@drawable/searchv1" />
+            android:layout_marginStart="@dimen/search_image_marginStart"
+            android:src="@drawable/searchv2"
+            android:background="#00000000"
+            android:contentDescription="@string/content_description_search_icon" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/recView_marginTop"
         android:id="@+id/fragment_search_repos"/>
 </LinearLayout>

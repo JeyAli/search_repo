@@ -1,5 +1,6 @@
 package com.example.github.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -25,17 +26,18 @@ class RepositoryRecyclerAdapter: RecyclerView.Adapter<RepositoryRecyclerAdapter.
         parent: ViewGroup,
         viewType: Int,
     ): RepositoryRecyclerAdapter.RepositoriesViewHolder {
-        var itemView = LayoutInflater
+        val itemView = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.repository_item,parent,false)
         return RepositoriesViewHolder(itemView)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: RepositoryRecyclerAdapter.RepositoriesViewHolder, position: Int) {
         holder.repoName.text = repositories[position].title
 
         if (repositories[position].star != null) {
-            var startCount = repositories[position].star!!.toDouble()
+            val startCount = repositories[position].star!!.toDouble()
 
             if (startCount > 1000) {
                 holder.stars.text = String.format("%.1f", startCount/1000) + "k"
@@ -45,7 +47,7 @@ class RepositoryRecyclerAdapter: RecyclerView.Adapter<RepositoryRecyclerAdapter.
         }
 
         if (repositories[position].fork != null) {
-            var forkCount = repositories[position].fork!!.toDouble()
+            val forkCount = repositories[position].fork!!.toDouble()
 
             if (forkCount > 1000) {
                 holder.forks.text = String.format("%.1f", forkCount/1000) + "k"
@@ -77,7 +79,7 @@ class RepositoryRecyclerAdapter: RecyclerView.Adapter<RepositoryRecyclerAdapter.
         return repositories.size
     }
 
-    public fun setRepositories(repos: ArrayList<RepositoryModel>) {
+    fun setRepositories(repos: ArrayList<RepositoryModel>) {
         this.repositories = repos
         notifyDataSetChanged()
     }

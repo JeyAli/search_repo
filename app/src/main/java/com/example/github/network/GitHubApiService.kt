@@ -31,10 +31,10 @@ interface GitHubApiService {
 
 object Network {
     val gitHubService: GitHubApiService by lazy {
-        var logging = HttpLoggingInterceptor();
+        val logging = HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY)
 
-        var httpClient = OkHttpClient.Builder();
+        val httpClient = OkHttpClient.Builder();
         httpClient.addInterceptor(logging)
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())

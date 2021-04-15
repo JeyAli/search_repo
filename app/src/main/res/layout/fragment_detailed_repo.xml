@@ -3,67 +3,81 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp">
+    android:layout_margin="@dimen/detailed_repo_margin">
 
     <TextView
+        style="@style/RepoTitle"
         android:id="@+id/txtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"
-        android:text="Capstone_Project"
-        android:textSize="18dp"
+        android:layout_marginTop="@dimen/detailed_repo_margin"
         />
 
     <RelativeLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/detailed_repo_margin"
         >
         <TextView
+            style="@style/RepoDescription"
             android:id="@+id/lblLanguage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="left"
-            android:textSize="15dp"
-            android:text="Language: "
+            android:gravity="start"
+            android:text="@string/language"
             />
         <TextView
+            style="@style/RepoDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtLanguage"
             android:layout_toEndOf="@+id/lblLanguage"
-            android:text="JavaScript"
+            android:text="@string/example_language"
             />
     </RelativeLayout>
     <RelativeLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="@dimen/detailed_repo_margin"
         >
         <TextView
+            style="@style/RepoDescription"
             android:id="@+id/lblIssues"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="left"
-            android:textSize="15dp"
-            android:text="Issues: "
+            android:gravity="start"
+            android:text="@string/issues"
             />
         <TextView
+            style="@style/RepoDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtIssues"
             android:layout_toEndOf="@+id/lblIssues"
-            android:text="100"
+            android:text="@string/example_issues"
             />
     </RelativeLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/detailed_repo_margin"
+        >
     <WebView
         android:id="@+id/webReadMe"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/detailed_repo_margin"
+        android:visibility="gone"
         />
+        <ProgressBar
+            android:id="@+id/pBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="visible"/>
+    </FrameLayout>
 
 </LinearLayout>

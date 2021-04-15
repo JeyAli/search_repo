@@ -8,7 +8,7 @@ import com.example.github.network.GitHubApiService
 import com.example.github.network.Network
 
 class ReadMeRepository {
-    val gitHubApiService: GitHubApiService = Network.gitHubService
+    private val gitHubApiService: GitHubApiService = Network.gitHubService
     private var readMeModel: MutableLiveData<RepositoryReadMeModel> =
         MutableLiveData<RepositoryReadMeModel>()
 

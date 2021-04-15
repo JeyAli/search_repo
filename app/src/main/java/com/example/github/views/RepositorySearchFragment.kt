@@ -17,12 +17,8 @@ import com.example.github.viewmodel.RepositoriesViewModel
 
 class RepositorySearchFragment: Fragment() {
 
-    val viewModel: RepositoriesViewModel by activityViewModels()
-    val adapter = RepositoryRecyclerAdapter()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private val viewModel: RepositoriesViewModel by activityViewModels()
+    private val adapter = RepositoryRecyclerAdapter()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -39,17 +35,15 @@ class RepositorySearchFragment: Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
 
-        var keyword:EditText = view.findViewById(R.id.txtSearch)
+        val keyword:EditText = view.findViewById(R.id.txtSearch)
 
-        var searchBtn: ImageButton = view.findViewById(R.id.btnSearch)
-        searchBtn.setOnClickListener {
-            view->performSearch(keyword.text.toString())
-        }
+        val searchBtn: ImageButton = view.findViewById(R.id.btnSearch)
+        searchBtn.setOnClickListener { performSearch(keyword.text.toString()) }
 
         return view
     }
 
-    fun performSearch(keyword: String) {
+    private fun performSearch(keyword: String) {
         viewModel.search(keyword)
     }
 }

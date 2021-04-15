@@ -13,7 +13,6 @@ class ReadMeViewModel (application: Application) : AndroidViewModel(application)
     private val readMeRepository = ReadMeRepository()
     var readMeModel = readMeRepository.getReadMeModel()
 
-
     fun fetchReadMe(login:String, name:String) {
         viewModelScope.launch {
             readMeRepository.fetchReadMe(login, name)
