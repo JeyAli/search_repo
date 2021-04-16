@@ -6,9 +6,8 @@ import com.example.github.model.RepositoryModel
 import com.example.github.network.GitHubApiService
 import com.example.github.network.Network
 
-
-public class SearchRepository {
-    private val gitHubApiService: GitHubApiService = Network.gitHubService
+class SearchRepository(apiService: GitHubApiService) {
+    private val gitHubApiService = apiService
     private var repositories: MutableLiveData<ArrayList<RepositoryModel>> =
         MutableLiveData<ArrayList<RepositoryModel>>()
 

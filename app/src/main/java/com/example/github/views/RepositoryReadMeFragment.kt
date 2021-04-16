@@ -12,12 +12,27 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.navArgs
 import com.example.github.R
+import com.example.github.network.Network
+import com.example.github.repository.ReadMeRepository
 import com.example.github.viewmodel.ReadMeViewModel
 
 class RepositoryReadMeFragment: Fragment() {
-    private val viewModel: ReadMeViewModel by activityViewModels()
+    /**
+     * One way to delay creation of the viewModel until an appropriate lifecycle method is to use
+     * lazy. This requires that viewModel not be referenced before onActivityCreated, which we
+     * do in this Fragment.
+     */
+    private val viewModel: ReadMeViewModel by lazy {
+        val activity = requireNotNull(this.activity) {
+            "You can only access the viewModel after onActivityCreated()"
+        }
+        ViewModelProviders.of(this, ReadMeViewModel
+            .ReadMeViewModelFactory(ReadMeRepository(Network.gitHubService), activity.application))
+            .get(ReadMeViewModel::class.java)
+    }
     private val args : RepositoryReadMeFragmentArgs by navArgs()
 
     override fun onCreateView(
